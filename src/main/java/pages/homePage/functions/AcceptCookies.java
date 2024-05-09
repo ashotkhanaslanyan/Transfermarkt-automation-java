@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AcceptCookies {
 
     private final WebDriver driver;
-    private final pages.homePage.repository.CookiePopupRepository repo = new pages.homePage.repository.CookiePopupRepository();
     private final WebDriverWait wait;
+    private final pages.homePage.repository.CookiePopupRepository repo = new pages.homePage.repository.CookiePopupRepository();
 
     public AcceptCookies(WebDriver driver) {
         this.driver = driver;
@@ -22,5 +22,6 @@ public class AcceptCookies {
         driver.switchTo().frame(driver.findElement(repo.NotificationIframe));
         driver.findElement(repo.AcceptAndContinueBtn).click();
         wait.until(ExpectedConditions.numberOfElementsToBe(repo.NotificationsWindow, 0));
+        driver.switchTo().defaultContent();
     }
 }
