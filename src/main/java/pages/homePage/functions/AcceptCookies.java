@@ -1,4 +1,4 @@
-package pages.homePage.functions;
+package pages.HomePage.functions;
 
 import java.time.Duration;
 
@@ -10,7 +10,7 @@ public class AcceptCookies {
 
     private final WebDriver driver;
     private final WebDriverWait wait;
-    private final pages.homePage.repository.CookiePopupRepository repo = new pages.homePage.repository.CookiePopupRepository();
+    private final pages.HomePage.repository.CookiePopupRepository repo = new pages.HomePage.repository.CookiePopupRepository();
 
     public AcceptCookies(WebDriver driver) {
         this.driver = driver;

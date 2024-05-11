@@ -1,4 +1,4 @@
-package pages.homePage.functions;
+package pages.HomePage.functions;
 
 import java.time.Duration;
 
@@ -12,7 +12,7 @@ public class Navigations {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final Actions action;
-    private final pages.homePage.repository.NavbarRepository repo = new pages.homePage.repository.NavbarRepository();
+    private final pages.HomePage.repository.NavbarRepository repo = new pages.HomePage.repository.NavbarRepository();
     
     public Navigations(WebDriver driver) {
         this.driver = driver;

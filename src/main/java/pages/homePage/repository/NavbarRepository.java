@@ -1,4 +1,4 @@
-package pages.homePage.repository;
+package pages.HomePage.repository;
 
 import org.openqa.selenium.By;
 
