@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.tmkt.pages.HomePage.assertions.HomePageAssertions;
 import com.tmkt.pages.HomePage.functions.AcceptCookies;
 import com.tmkt.pages.HomePage.functions.Search;
+import com.tmkt.pages.SearchResultsPage.assertions.SearchResultAssertions;
 import com.tmkt.utilities.WebDriverProvider;
 
 public class PlayerSearchTest implements WebDriverProvider {
@@ -21,6 +22,7 @@ public class PlayerSearchTest implements WebDriverProvider {
     private Search objSearch;
 
     private HomePageAssertions objHomePageAssertions;
+    private SearchResultAssertions objSearchResultAssertions;
 
     ChromeOptions chromeOptions = new ChromeOptions();
 
@@ -38,6 +40,7 @@ public class PlayerSearchTest implements WebDriverProvider {
         objAcceptCookies = new AcceptCookies(driver);
         objSearch = new Search(driver);
         objHomePageAssertions = new HomePageAssertions(driver);
+        objSearchResultAssertions = new SearchResultAssertions(driver);
 
         // Accept cookies and ads and continue
         objAcceptCookies.AcceptCookiesAndCloseNotice();
@@ -47,16 +50,21 @@ public class PlayerSearchTest implements WebDriverProvider {
     @Test
     public void search_player_by_full_name() {
         objSearch.SearchByText("Cristiano Ronaldo");
+        objSearchResultAssertions.ValidateCorrectPlayerIsShown("Cristiano Ronaldo");
+        objSearchResultAssertions.ValidateCorrectClubIsShown("Cristiano Ronaldo");
     }
 
     @Test
     public void search_player_by_first_name() {
         objSearch.SearchByText("Lionel");
+        objSearchResultAssertions.ValidateCorrectPlayerIsShown("Lionel Messi");
+        objSearchResultAssertions.ValidateCorrectClubIsShown("Lionel Messi");
     }
 
     @Test
     public void search_non_existing_player() {
         objSearch.SearchByText("Ashot Khan-Aslanyan");
+        objSearchResultAssertions.ValidateNoResultsFound();
     }
 
     @AfterClass

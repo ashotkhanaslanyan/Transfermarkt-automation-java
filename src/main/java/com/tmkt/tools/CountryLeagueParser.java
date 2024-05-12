@@ -10,8 +10,7 @@ public class CountryLeagueParser {
 
     @SuppressWarnings("unchecked")
     public CountryLeagueParser() {
-        // Use forward slashes for cross-platform compatibility
-        InputStream input = getClass().getClassLoader().getResourceAsStream("resources/CountryLeague.json");
+        InputStream input = getClass().getClassLoader().getResourceAsStream("com/tmkt/resources/CountryLeague.json");
         try {
             ObjectMapper mapper = new ObjectMapper();
             countryLeagueMap = mapper.readValue(input, HashMap.class);
