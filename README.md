@@ -7,7 +7,7 @@ Software Testing Class Final Project on https://www.transfermarkt.com/
 ## Prerequisites
 
 Ensure you have the following installed:
-- Java Development Kit (JDK) 11 or higher
+- Java Development Kit (JDK) 11 or higher preferably 17
 - Maven
 - Docker (for running services with Docker Compose)
 
@@ -22,12 +22,12 @@ Ensure you have the following installed:
 
 2. **Install JDK**:
     ```bash
-    brew install openjdk@11
+    brew install openjdk@17
     ```
 
     After installation, add OpenJDK to your PATH:
     ```bash
-    echo 'export PATH="/usr/local/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
+    echo 'export PATH="/usr/local/opt/openjdk@17/bin:$PATH"' >> ~/.zshrc
     source ~/.zshrc
     ```
 
@@ -61,7 +61,7 @@ Ensure you have the following installed:
 ### For Windows:
 
 1. **Install JDK**:
-    - Download and install from [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or adopt OpenJDK.
+    - Download and install from [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) or adopt OpenJDK.
 
 2. **Install Maven**:
     - Download Maven from [Apache Maven](https://maven.apache.org/download.cgi).
