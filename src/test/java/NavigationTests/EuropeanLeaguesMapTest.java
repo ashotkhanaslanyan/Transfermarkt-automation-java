@@ -8,9 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -25,8 +23,7 @@ import pages.EuropeanLeaguesAndCupsPage.assertions.EuroLeaguesAndCupsAssertions;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EuropeanLeaguesMapTest {
     
-    // private RemoteWebDriver driver;
-    private WebDriver driver;
+    private RemoteWebDriver driver;
 
     private AcceptCookies objAcceptCookies;
     private Navigations objNavigations;
@@ -41,11 +38,9 @@ public class EuropeanLeaguesMapTest {
     @BeforeAll
     public void setup() throws Exception {
         try {
-            // chromeOptions.addArguments("--start-maximized");
+            chromeOptions.addArguments("--start-maximized");
             chromeOptions.addArguments("--ignore-certificate-errors");
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-            this.driver = new ChromeDriver(chromeOptions);
-            // this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
+            this.driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
             driver.get("https://www.transfermarkt.com");
         } catch (WebDriverException e) {
             e.printStackTrace();
@@ -62,20 +57,18 @@ public class EuropeanLeaguesMapTest {
         // Accept cookies and ads and continue
         objAcceptCookies.AcceptCookiesAndCloseNotice();
         objHomePageAssertions.ValidateHomePageOpen();
-        objNavigations.GoToEuropeanCompetitionsPage();
-        objEuroLeaguesAndCupsAssertions.ValidateEuroLeaguesAndCupsPageOpen();
     }
 
     @Test
     public void check_top_five_leagues_map_navigation() {
         List<String> countriesList = Arrays.asList("France", "Germany", "Spain", "Italy", "England");
         for (String country : countriesList) {
+            objNavigations.GoToEuropeanCompetitionsPage();
+            objEuroLeaguesAndCupsAssertions.ValidateEuroLeaguesAndCupsPageOpen();
             objEuropeMap.GoToGivenCountryLeague(country);
             objCountrywiseAssertions.ValidateCountryLeaguesPageOpen();
             objCountrywiseAssertions.ValidateNationalTeamExists(country);
             objCountrywiseAssertions.ValidateFirstTierLeagueExists(country);
-            objNavigations.GoToEuropeanCompetitionsPage();
-            objEuroLeaguesAndCupsAssertions.ValidateEuroLeaguesAndCupsPageOpen();
         }
     }
 
