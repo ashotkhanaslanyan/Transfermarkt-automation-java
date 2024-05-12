@@ -19,6 +19,7 @@ import pages.HomePage.functions.Navigations;
 import pages.EuropeanLeaguesAndCupsPage.functions.EuropeMap;
 
 import pages.HomePage.assertions.HomePageAssertions;
+import pages.EuropeanLeaguesAndCupsPage.assertions.CountrywiseAssertions;
 import pages.EuropeanLeaguesAndCupsPage.assertions.EuroLeaguesAndCupsAssertions;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -33,6 +34,7 @@ public class EuropeanLeaguesMapTest {
 
     private HomePageAssertions objHomePageAssertions;
     private EuroLeaguesAndCupsAssertions objEuroLeaguesAndCupsAssertions;
+    private CountrywiseAssertions objCountrywiseAssertions;
 
     ChromeOptions chromeOptions = new ChromeOptions();
 
@@ -55,6 +57,7 @@ public class EuropeanLeaguesMapTest {
 
         objHomePageAssertions = new HomePageAssertions(driver);
         objEuroLeaguesAndCupsAssertions = new EuroLeaguesAndCupsAssertions(driver);
+        objCountrywiseAssertions = new CountrywiseAssertions(driver);
 
         // Accept cookies and ads and continue
         objAcceptCookies.AcceptCookiesAndCloseNotice();
@@ -68,6 +71,9 @@ public class EuropeanLeaguesMapTest {
         List<String> countriesList = Arrays.asList("France", "Germany", "Spain", "Italy", "England");
         for (String country : countriesList) {
             objEuropeMap.GoToGivenCountryLeague(country);
+            objCountrywiseAssertions.ValidateCountryLeaguesPageOpen();
+            objCountrywiseAssertions.ValidateNationalTeamExists(country);
+            objCountrywiseAssertions.ValidateFirstTierLeagueExists(country);
             objNavigations.GoToEuropeanCompetitionsPage();
             objEuroLeaguesAndCupsAssertions.ValidateEuroLeaguesAndCupsPageOpen();
         }
