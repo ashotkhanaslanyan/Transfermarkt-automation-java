@@ -1,4 +1,4 @@
-package com.tmkt.LeagueTests;
+package com.tmkt.TeamTests;
 
 import java.net.URL;
 
@@ -11,23 +11,26 @@ import org.testng.annotations.Test;
 
 import com.tmkt.utilities.WebDriverProvider;
 
+
 import com.tmkt.pages.HomePage.functions.AcceptCookies;
 import com.tmkt.pages.HomePage.functions.Navigations;
 import com.tmkt.pages.BundesLigaPage.functions.BundesligaPageFunctions;
+import com.tmkt.pages.TeamPage.functions.TeamPageFunctions;
 
 import com.tmkt.pages.HomePage.assertions.HomePageAssertions;
-import com.tmkt.pages.BundesLigaPage.assertions.BundesligaAsserions;
+import com.tmkt.pages.TeamPage.assertions.TeamPageAssertions;
 
-public class BundesligaSortTest implements WebDriverProvider {
+public class TeamValueTest implements WebDriverProvider {
 
     private RemoteWebDriver driver;
 
     private AcceptCookies objAcceptCookies;
     private Navigations objNavigations;
     private BundesligaPageFunctions objBundesligaPageFunctions;
+    private TeamPageFunctions objTeamPageFunctions;
 
     private HomePageAssertions objHomePageAssertions;
-    private BundesligaAsserions objBundesligaAsserions;
+    private TeamPageAssertions objTeamPageAssertions;
 
     ChromeOptions chromeOptions = new ChromeOptions();
 
@@ -45,9 +48,10 @@ public class BundesligaSortTest implements WebDriverProvider {
         objAcceptCookies = new AcceptCookies(driver);
         objNavigations = new Navigations(driver);
         objBundesligaPageFunctions = new BundesligaPageFunctions(driver);
+        objTeamPageFunctions = new TeamPageFunctions(driver);
         
         objHomePageAssertions = new HomePageAssertions(driver);
-        objBundesligaAsserions = new BundesligaAsserions(driver);
+        objTeamPageAssertions = new TeamPageAssertions(driver);
         
         // Accept cookies and ads and continue
         objAcceptCookies.AcceptCookiesAndCloseNotice();
@@ -57,30 +61,14 @@ public class BundesligaSortTest implements WebDriverProvider {
         objNavigations.GoToBundesligaPage();
         objBundesligaPageFunctions.WaitForBundesligaPageToLoad();
         objBundesligaPageFunctions.ScrollTableToView();
-    }
-
-    @Test
-    public void check_sorting_tmv_in_descending_order() {
-        objBundesligaPageFunctions.SortClubsByTMVDesc();
-        objBundesligaAsserions.ValidateTMVSortedDescending();
-    }
-
-    @Test
-    public void check_sorting_tmv_in_ascending_order() {
-        objBundesligaPageFunctions.SortClubsByTMVAsc();
-        objBundesligaAsserions.ValidateTMVSortedAscending();
+        objBundesligaPageFunctions.OpenTeamPage("VfB Stuttgart");
+        objTeamPageFunctions.WaitForTeamPageToLoad();
     }
     
     @Test
-    public void check_sorting_age_in_descending_order() {
-        objBundesligaPageFunctions.SortClubsByAgeDesc();
-        objBundesligaAsserions.ValidateAgeSortedDescending();
-    }
-
-    @Test
-    public void check_sorting_age_in_ascending_order() {
-        objBundesligaPageFunctions.SortClubsByAgeAsc();
-        objBundesligaAsserions.ValidateAgeSortedAscending();
+    public void check_team_market_value_equals_sum_of_player_market_values() {
+        objTeamPageAssertions.ValidateTeamPageOpen("VfB Stuttgart");
+        objTeamPageAssertions.ValidateHeaderMVEqualsSumOfPlayersMV();
     }
 
     @AfterClass

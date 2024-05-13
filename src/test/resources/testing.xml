@@ -19,4 +19,9 @@
             <class name="com.tmkt.LeagueTests.BundesligaSortTest"/>
         </classes>
     </test>
+    <test name="TeamTests">
+        <classes>
+            <class name="com.tmkt.TeamTests.TeamValueTest"/>
+        </classes>
+    </test>
 </suite>

@@ -15,4 +15,8 @@ public class BundesligaRepository {
 
     public By BundesligaTable = By.id("yw1");
     public By InfoBox = By.xpath(".//div[@class='box']/h2[contains(text(), 'Info')]");
+
+    public By getTeam(String teamName) {
+        return By.xpath(String.format(".//div[@id='yw1']//tbody//td[@class='hauptlink no-border-links']/a[@title='%s']", teamName));
+    }
 }

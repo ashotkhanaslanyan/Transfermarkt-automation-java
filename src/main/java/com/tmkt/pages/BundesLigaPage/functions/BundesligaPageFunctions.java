@@ -67,4 +67,8 @@ public class BundesligaPageFunctions {
             WaitForBundesligaTableToLoad();
         }
     }
+
+    public void OpenTeamPage(String teamName) {
+        driver.findElement(repo.getTeam(teamName)).click();
+    }
 }
