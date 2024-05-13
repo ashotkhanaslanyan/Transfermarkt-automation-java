@@ -31,4 +31,10 @@ public class Navigations {
         wait.until(ExpectedConditions.elementToBeClickable(repo.AllEuropeanCompetitionsLink));
         driver.findElement(repo.BundesligaLink).click();
     }
+
+    public void GoToRegistrationPage() {
+        driver.findElement(repo.LoginBtn).click();
+        wait.until(ExpectedConditions.elementToBeClickable(repo.RegisterLink));
+        driver.findElement(repo.RegisterLink).click();
+    }
 }

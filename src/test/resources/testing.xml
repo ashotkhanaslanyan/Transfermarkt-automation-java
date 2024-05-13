@@ -24,4 +24,9 @@
             <class name="com.tmkt.TeamTests.TeamValueTest"/>
         </classes>
     </test>
+    <test name="AuthTests">
+        <classes>
+            <class name="com.tmkt.AuthTests.RegistrationTest"/>
+        </classes>
+    </test>
 </suite>

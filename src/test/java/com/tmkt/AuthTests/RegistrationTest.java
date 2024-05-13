@@ -1,4 +1,4 @@
-package com.tmkt.TeamTests;
+package com.tmkt.AuthTests;
 
 import java.net.URL;
 
@@ -13,23 +13,21 @@ import com.tmkt.utilities.WebDriverProvider;
 
 import com.tmkt.pages.HomePage.functions.AcceptCookies;
 import com.tmkt.pages.HomePage.functions.Navigations;
-import com.tmkt.pages.BundesLigaPage.functions.BundesligaPageFunctions;
-import com.tmkt.pages.TeamPage.functions.TeamPageFunctions;
-
+import com.tmkt.pages.RegistrationPage.assertions.RegistrationPageAssertions;
+import com.tmkt.pages.RegistrationPage.functions.RegistrationFunctions;
 import com.tmkt.pages.HomePage.assertions.HomePageAssertions;
-import com.tmkt.pages.TeamPage.assertions.TeamPageAssertions;
 
-public class TeamValueTest implements WebDriverProvider {
 
+public class RegistrationTest implements WebDriverProvider {
+    
     private RemoteWebDriver driver;
 
     private AcceptCookies objAcceptCookies;
     private Navigations objNavigations;
-    private BundesligaPageFunctions objBundesligaPageFunctions;
-    private TeamPageFunctions objTeamPageFunctions;
+    private RegistrationFunctions objRegistrationFunctions;
 
     private HomePageAssertions objHomePageAssertions;
-    private TeamPageAssertions objTeamPageAssertions;
+    private RegistrationPageAssertions objRegistrationPageAssertions;
 
     ChromeOptions chromeOptions = new ChromeOptions();
 
@@ -46,32 +44,24 @@ public class TeamValueTest implements WebDriverProvider {
 
         objAcceptCookies = new AcceptCookies(driver);
         objNavigations = new Navigations(driver);
-        objBundesligaPageFunctions = new BundesligaPageFunctions(driver);
-        objTeamPageFunctions = new TeamPageFunctions(driver);
+        objRegistrationFunctions = new RegistrationFunctions(driver);
         
         objHomePageAssertions = new HomePageAssertions(driver);
-        objTeamPageAssertions = new TeamPageAssertions(driver);
+        objRegistrationPageAssertions = new RegistrationPageAssertions(driver);
         
         // Accept cookies and ads and continue
         objAcceptCookies.AcceptCookiesAndCloseNotice();
         objHomePageAssertions.ValidateHomePageOpen();
-
-        // Go to Bundesliga page
-        objNavigations.GoToBundesligaPage();
-        objBundesligaPageFunctions.WaitForBundesligaPageToLoad();
-        objBundesligaPageFunctions.ScrollTableToView();
-        objBundesligaPageFunctions.OpenTeamPage("VfB Stuttgart");
-        objTeamPageFunctions.WaitForTeamPageToLoad();
-        objTeamPageAssertions.ValidateTeamPageOpen("VfB Stuttgart");
+        objNavigations.GoToRegistrationPage();
+        objRegistrationFunctions.WaitForRegistrationFormToLoad();
     }
-    
+
     @Test
-    public void check_team_market_value_equals_sum_of_player_market_values() {
-        objTeamPageAssertions.ValidateHeaderMVEqualsSumOfPlayersMV();
-    }
-
-    @Test void check_squad_size_equals_number_of_players_in_the_table() {
-        objTeamPageAssertions.ValidateSquadSize();
+    public void fill_out_and_submit_registration_form() {
+        objRegistrationFunctions.FillOutTheForm();
+        objRegistrationFunctions.SubmitForm();
+        objRegistrationFunctions.WaitForRegistrationSuccessPage();
+        objRegistrationPageAssertions.ValidateSuccessfulRegistrations();
     }
 
     @AfterClass
