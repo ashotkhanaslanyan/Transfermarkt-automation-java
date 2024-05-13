@@ -1,6 +1,4 @@
-# ST_Final
-
-Software Testing Class Final Project on https://www.transfermarkt.com/
+# Transfermarkt.com automation
 
 # Project Setup Instructions
 
