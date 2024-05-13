@@ -14,4 +14,9 @@
             <class name="com.tmkt.SearchTests.PlayerSearchTest"/>
         </classes>
     </test>
+    <test name="LeagueTests">
+        <classes>
+            <class name="com.tmkt.LeagueTests.BundesligaSortTest"/>
+        </classes>
+    </test>
 </suite>

@@ -25,4 +25,10 @@ public class Navigations {
         wait.until(ExpectedConditions.elementToBeClickable(repo.AllEuropeanCompetitionsLink));
         driver.findElement(repo.AllEuropeanCompetitionsLink).click();
     }
+
+    public void GoToBundesligaPage() {
+        action.moveToElement(driver.findElement(repo.CompetitionsNavBtn)).perform();
+        wait.until(ExpectedConditions.elementToBeClickable(repo.AllEuropeanCompetitionsLink));
+        driver.findElement(repo.BundesligaLink).click();
+    }
 }

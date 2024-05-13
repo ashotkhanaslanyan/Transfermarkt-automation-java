@@ -9,4 +9,5 @@ public class NavbarRepository {
     
     // Competitions Dropdown Navbar
     public By AllEuropeanCompetitionsLink = By.xpath(".//nav//li[@data-nav-group='wettbewerbe']//a[contains(text(), 'All European Competitions')]");
+    public By BundesligaLink = By.xpath(".//nav//li[@data-nav-group='wettbewerbe']//a/img[@alt='Bundesliga']");
 }
