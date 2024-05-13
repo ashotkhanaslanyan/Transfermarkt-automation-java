@@ -4,13 +4,21 @@ public class PMVSumCalculator {
 
     public PMVSumCalculator() {}
 
-    public double getTMVFromPMVs(String[] values) {
+    public Double getTMVFromPMVs(String[] values) {
         double[] numbers = extractNumbers(values);
         return calculateSumOfAllPMVs(numbers);
     }
 
     public double getTMVFromHeaderValues(String number) {
         return extractTeamMarketValue(number);
+    }
+
+    public int getSquadSize(String squadSize) {
+        return Integer.parseInt(squadSize);
+    }
+
+    public int getPlayersRowCount(String[] rows) {
+        return rows.length;
     }
 
     public double calculateSumOfAllPMVs(double[] numbers) {

@@ -29,4 +29,10 @@ public class TeamPageAssertions {
                 driver.findElement(repo.TeamMarketValue).getText()));
     }
 
+    public void ValidateSquadSize() {
+        Assert.assertEquals(pmvSumCalculator.getPlayersRowCount(
+            objHelperFunctions.getColumnToList(repo.PlayersTableRows)),
+            pmvSumCalculator.getSquadSize(
+                driver.findElement(repo.SquadSize).getText()));
+    }
 }

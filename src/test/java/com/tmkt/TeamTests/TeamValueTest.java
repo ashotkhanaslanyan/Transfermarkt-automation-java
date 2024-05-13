@@ -63,12 +63,16 @@ public class TeamValueTest implements WebDriverProvider {
         objBundesligaPageFunctions.ScrollTableToView();
         objBundesligaPageFunctions.OpenTeamPage("VfB Stuttgart");
         objTeamPageFunctions.WaitForTeamPageToLoad();
+        objTeamPageAssertions.ValidateTeamPageOpen("VfB Stuttgart");
     }
     
     @Test
     public void check_team_market_value_equals_sum_of_player_market_values() {
-        objTeamPageAssertions.ValidateTeamPageOpen("VfB Stuttgart");
         objTeamPageAssertions.ValidateHeaderMVEqualsSumOfPlayersMV();
+    }
+
+    @Test void check_squad_size_equals_number_of_players_in_the_table() {
+        objTeamPageAssertions.ValidateSquadSize();
     }
 
     @AfterClass
