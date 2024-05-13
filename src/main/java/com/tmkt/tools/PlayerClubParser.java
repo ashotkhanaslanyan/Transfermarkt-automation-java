@@ -10,7 +10,7 @@ public class PlayerClubParser {
 
     @SuppressWarnings("unchecked")
     public PlayerClubParser() {
-        InputStream input = getClass().getClassLoader().getResourceAsStream("com/tmkt/resources/PlayerClub.json");
+        InputStream input = getClass().getClassLoader().getResourceAsStream("PlayerClub.json");
         try {
             ObjectMapper mapper = new ObjectMapper();
             playerClubMap = mapper.readValue(input, HashMap.class);

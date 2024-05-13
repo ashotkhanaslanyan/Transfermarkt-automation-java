@@ -10,7 +10,7 @@ public class CountryLeagueParser {
 
     @SuppressWarnings("unchecked")
     public CountryLeagueParser() {
-        InputStream input = getClass().getClassLoader().getResourceAsStream("com/tmkt/resources/CountryLeague.json");
+        InputStream input = getClass().getClassLoader().getResourceAsStream("CountryLeague.json");
         try {
             ObjectMapper mapper = new ObjectMapper();
             countryLeagueMap = mapper.readValue(input, HashMap.class);
