@@ -8,12 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TeamPageFunctions {
 
-    private final WebDriver driver;
     private final WebDriverWait wait;
     private final com.tmkt.pages.TeamPage.repository.TeamPageRepository repo = new com.tmkt.pages.TeamPage.repository.TeamPageRepository();
-
     public TeamPageFunctions(WebDriver driver) {
-        this.driver = driver;
         this.wait = new WebDriverWait((driver), Duration.ofSeconds(5));
     }
 
